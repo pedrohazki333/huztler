@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Clientes</title>
+</head>
+<body>
+    <h1>Lista de Clientes</h1>
+    <a href="/customers/create">Adicionar Cliente</a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Telefone</th>
+                <th>Empresa</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% customers.forEach(customer => { %>
+                <tr>
+                    <td><%= customer.name %></td>
+                    <td><%= customer.email %></td>
+                    <td><%= customer.phone %></td>
+                    <td><%= customer.company %></td>
+                    <td>
+                        <a href="/customers/edit/<%= customer._id %>">Editar</a>
+                        <form action="/customers/delete/<%= customer._id %>" method="POST" style="display:inline;">
+                            <button type="submit">Deletar</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</body>
+</html>
