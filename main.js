@@ -11,7 +11,7 @@ function createWindow () {
             contextIsolation: false
         }
     });
-    mainWindow.loadURL('http://localhost:5000');
+    mainWindow.loadURL('http://localhost:5000/');
 }
 
 // INITIALIZES ELECTRON WHEN THE APP IS READY

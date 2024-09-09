@@ -6,7 +6,10 @@ const Customer = require('../../models/customerModel');
 router.get('/', async (req, res) => {
     try {
         const customers = await Customer.find();
-        res.render('customersViews/index', { customers });
+        res.render('customersViews/index.njk', {
+            title: "Customer List",
+            customers: customers
+        });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
@@ -14,7 +17,7 @@ router.get('/', async (req, res) => {
 
 // CUSTOMER FORM CREATE
 router.get('/create', (req, res) => {
-    res.render('customersViews/create');
+    res.render('customersViews/create.njk');
 });
 
 // STORE CUSTOMER DATA
@@ -32,7 +35,7 @@ router.post('/create', async (req, res) => {
 router.get('/edit/:id', async (req, res) => {
     try {
         const customer = await Customer.findById(req.params.id);
-        res.render('customersViews/edit', { customer });
+        res.render('customersViews/edit.njk', { customer });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

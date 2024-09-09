@@ -1,0 +1,55 @@
+{% extends 'layout.njk' %}
+{% block title %}
+    Huztler - Customer List
+{% endblock %}
+{% block content %}
+    <div class="row mb-3">
+        <h3>Customers</h3>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card p-3 shadow-sm">
+                <div class="list-group-flush">
+                    <a href="/customers" class="list-group-item list-group-item-action">Customer list</a>
+                    <a href="/customers/create" class="list-group-item list-group-item-action">
+                        Add customer
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="card p-3 shadow-sm">
+                <table class="table table-hover table-light" id="customersTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Company</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for customer in customers %}
+                            <tr>
+                                <td>{{ customer.name }}</td>
+                                <td>{{ customer.email }}</td>
+                                <td>{{ customer.phone }}</td>
+                                <td>{{ customer.company }}</td>
+                                <td>
+                                    <a class="nav-link" href="/customers/edit/{{ customer._id }}">Edit</a>
+                                </td>
+                                <td>
+                                    <form action="/customers/delete/{{ customer._id }}" method="POST" style="display: inline;">
+                                        <button class="nav-link" type="submit" style="display: inline;">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

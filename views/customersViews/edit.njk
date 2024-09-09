@@ -1,0 +1,44 @@
+{% extends 'layout.njk' %}
+{% block title %}
+    Huztler - Register Customer
+{% endblock %}
+{% block content %}
+    <div class="row mb-3">
+        <h3>Edit Customer</h3>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card p-3 shadow-sm">
+                <div class="list-group-flush">
+                    <a href="/customers" class="list-group-item list-group-item-action">Customer list</a>
+                    <a href="/customers/create" class="list-group-item list-group-item-action">
+                        Add customer
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="card p-3 shadow-sm">
+                <form action="/customers/edit/{{ customer._id }}" method="POST">
+                    <div class="mb-2">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" value="{{ customer.name }}">
+                    </div>
+                    <div class="mb-2">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" value="{{ customer.email }}">
+                    </div>
+                    <div class="mb-2">
+                        <label for="phone" class="form-label">Phone</label>
+                        <input type="text" class="form-control" id="phone" name="phone" value="{{ customer.phone }}">
+                    </div>
+                    <div class="mb-2">
+                        <label for="company" class="form-label">Company</label>
+                        <input type="text" class="form-control" id="company" name="company" value="{{ customer.company }}">
+                        <button type="submit" class="btn btn-primary mt-4">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
