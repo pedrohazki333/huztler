@@ -1,0 +1,1 @@
+Apenas deixando a mensagem de que este repositório foi descontinuado e não receberá mais nenhum commit da minha parte. Se encontrar este sistema e está lendo este README, fique à vontade para estudar a usar como base para seus projetos!
